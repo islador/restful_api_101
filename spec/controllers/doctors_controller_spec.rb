@@ -85,7 +85,7 @@ RSpec.describe DoctorsController, type: :controller do
 		end
 	end
 
-	describe "update" do
+	describe "#update" do
 		context "with existing doctor" do
 			let!(:doctor) { create(:doctor) }
 			context "with valid params" do
@@ -126,7 +126,7 @@ RSpec.describe DoctorsController, type: :controller do
 		end
 	end
 
-	describe "delete" do
+	describe "#destroy" do
 		context "with a doctor by that ID" do
 			let!(:doctor) { create(:doctor) }
 			it "deletes the doctor from the database" do
