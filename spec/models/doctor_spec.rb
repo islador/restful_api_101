@@ -31,4 +31,38 @@ RSpec.describe Doctor, type: :model do
   		expect(doctor.updated_by).to_not be_nil
   	end
   end
+
+  describe "validations" do
+    describe "first_name" do
+      context "with first_name present" do
+        let(:doctor) { build(:doctor, first_name: "Ted", last_name: "Meowmers") }
+        it "is valid" do
+          expect(doctor.valid?).to be true
+        end
+      end
+
+      context "with first_name missing" do
+        let(:doctor) { build(:doctor, first_name: nil, last_name: "Felicity") }
+        it "is invalid" do
+          expect(doctor.valid?).to be false
+        end
+      end
+    end
+
+    describe "last_name" do
+      context "with last_name present" do
+        let(:doctor) { build(:doctor, first_name: "Ted", last_name: "Dog") }
+        it "is valid" do
+          expect(doctor.valid?).to be true
+        end
+      end
+
+      context "with last_name missing" do
+        let(:doctor) { build(:doctor, first_name: "Ted", last_name: nil) }
+        it "is invalid" do
+          expect(doctor.valid?).to be false
+        end
+      end
+    end
+  end
 end
